@@ -1,0 +1,910 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Changelog</title>
+    <script type="text/javascript">function showHide(id) {
+        if (document.getElementById(id).style.display === 'none') {
+            document.getElementById(id).style.display = 'block';
+            document.getElementById('btn_' + id).innerHTML = '&uArr;';
+        } else {
+            document.getElementById(id).style.display = 'none';
+            document.getElementById('btn_' + id).innerHTML = '&dArr;';
+        }
+        return true;
+    }</script>
+    <link rel="stylesheet" href="http://deepoove.com/swagger-diff/stylesheets/demo.css">
+</head>
+<body>
+<header>
+    <h1>Changelog</h1>
+</header>
+
+<div class="article">
+    <div>
+        <h2>Versions<a id="btn_versions" class="showhide" href="#"
+                       onClick="javascript:showHide(&#x27;versions&#x27;);">&uArr;</a></h2>
+        <hr>
+        <p id="versions"><b>Changelog entre les versions 1.9.3 to 1.10.0.</b></p> <br>
+        <div>
+            La version 1.10.0 apporte le support de la notification automatique. Ce support est le principal impact de
+            cette version. Il implique en effet une modification du contenu du dossier ; les éléments de la notification
+            manuelle sont déplacés dans un objet dédié <b>body.traitement.notificationManuelle</b>.
+            Par ailleurs l'élément <b>infoIdentiteANotifier</b> est renommé en <b>infoTitulaire</b>.
+            <br><br>
+            Autres modifications :
+            <ul>
+                <li>Ajout du champ <b>antaiId</b> qui correspond à l'identifiant du dossier coté Antai pour la
+                    notification automatique ;
+                </li>
+                <li>Ajout de la modification des <b>idHermes</b> et <b>idHermesUtilisateur</b> qui sont les identifiants
+                    des
+                    autorités fourrières et fourrières côté DNID ;
+                </li>
+                <li>Ajout du champ <b>displayed_text</b> pour les types d'AF qui est utilisé pour la notification ;</li>
+            </ul>
+        </div>
+        <br>
+        <hr>
+        <div>
+            <i>NB : Les routes comportant les mêmes modifications sont regroupées pour faciliter la lecture et à des
+                fins de concision.</i>
+        </div>
+    </div>
+    <div>
+        <h2>Nouveautés<a id="btn_new" class="showhide" href="#"
+                         onClick="javascript:showHide(&#x27;new&#x27;);">&uArr;</a></h2>
+        <hr>
+        <ol id="new">
+        </ol>
+    </div>
+    <div>
+
+        <h2>Suppression<a id="btn_deprecated" class="showhide" href="#"
+                          onClick="javascript:showHide(&#x27;deprecated&#x27;);">&uArr;</a>
+        </h2>
+        <hr>
+        <ol id="deprecated">
+            <li>
+                <span class="POST">POST</span>
+                <del>/api/comptes-utilisateurs/create/collectivite-territoriale</del>
+                <span> Route permettant de créer des nouveaux utilisateurs Collectivité Territoriale.</span>
+            </li>
+            <li>
+                <span class="POST">POST</span>
+                <del>/api/comptes-utilisateurs/create/gardien-fourriere</del>
+                <span> Route permettant de créer des nouveaux utilisateurs Gardien(ne) de Fourrière.</span>
+            </li>
+            <li>
+                <span class="POST">POST</span>
+                <del>/api/comptes-utilisateurs/create/police-municipale</del>
+                <span> Route permettant de créer des nouveaux utilisateurs Policier(ère) Municipal(e).</span>
+            </li>
+        </ol>
+    </div>
+    <div><h2>Modifications<a id="btn_changed" class="showhide" href="#"
+                             onClick="javascript:showHide(&#x27;changed&#x27;);">&uArr;</a></h2>
+        <hr>
+        <ol id="changed">
+            <li>
+                <span class="PUT">PUT</span>
+                <b>/api/autorite-fourriere/dossier/{id}/classement</b><br/>
+                <span>Route mettant à jour le classement manuel (non automatique).</span>
+                <br><br>
+                <span class="POST">POST</span>
+                <b>/api/autorite-fourriere/dossier/{id}/coordonneesProprietaires</b><br/>
+                <span>Route permettant de modifier les coordonnees du propriétaire</span>
+                <br><br>
+                <span class="POST">POST</span>
+                <b>/api/autorite-fourriere/dossier/{id}/prolongation-mef</b><br/>
+                <span>Route soumettant le formulaire de prolongation de mise en fourrière.</span>
+                <br><br>
+                <span class="GET">GET</span>
+                <b>/api/dossier/{dossierId} </b><br/>
+                <span>Route permettant d&#x27;accéder aux données d&#x27;un dossier.</span>
+                <br><br>
+                <span class="POST">POST</span>
+                <b>/api/force-ordre/dossier/{dossierId}/expediteur/ </b><br/>
+                <span>Soumission du formulaire d&#x27;expéditeur de notification manuelle.</span>
+                <br><br>
+                <span class="POST">POST</span>
+                <b>/api/force-ordre/dossier/{dossierId}/notification-infos/</b><br/>
+                <span>Soumission du formulaire de notification manuelle</span>
+                <br><br>
+                <span class="POST">POST</span>
+                <b>/api/force-ordre/dossier/{id}/coordonneesProprietaires</b><br/>
+                <span>Route permettant de modifier les coordonnees du propriétaire</span>
+                <br><br>
+                <span class="POST">POST</span>
+                <b>/api/gardien-fourriere/dossier</b><br/>
+                <span>Création d&#x27;un dossier via une fiche descriptive</span>
+                <br><br>
+                <span class="POST">POST</span>
+                <b>/api/gardien-fourriere/dossier/{dossierId}/ficheFourriere/update</b><br/>
+                <span>Mise à jour la fiche fourrière d&#x27;un véhicule.</span>
+                <br><br>
+                <span class="POST">POST</span>
+                <b>/api/gardien-fourriere/dossier/{dossierId}/sortie</b><br/>
+                <span>Route permettant de mettre à jour la fiche sortie d&#x27;un véhicule.</span>
+                <br><br>
+                <span class="POST">POST</span>
+                <b>/api/gardien-fourriere/dossier/{id}/bon-enlevement-gardien</b><br/>
+                <span>Mise à jour des données d&#x27;un bon d&#x27;enlèvement gardien.</span>
+                <ul class="detail">
+                    <li><h3>Type Retour</h3>
+                        <ul class="change response">
+                            <li>Ajout body.traitement.impossibiliteNotifier
+                                <span class="comment"></span>
+                            </li>
+                            <li>Ajout body.traitement.notificationAutomatique
+                                <span class="comment"></span>
+                            </li>
+                            <li>Ajout body.traitement.notificationManuelle
+                                <span class="comment"></span>
+                            </li>
+                            <li>Add
+                                body.traitement.mainLevee.fourriere.autoritesFourrieres.type.displayed_text
+                                <span class="comment"></span>
+                            </li>
+                            <li>Ajout computed.autoriteFourriereDto.type.displayed_text
+                                <span class="comment"></span>
+                            </li>
+                            <li>Ajout computed.fourriereDto.autoritesFourrieres.type.displayed_text
+                                <span class="comment"></span>
+                            </li>
+                            <li>Ajout computed.mainSivInfoDto.infoTitulaire
+                                <span class="comment"></span>
+                            </li>
+                            <li class="missing">Suppression
+                                <del>body.traitement.notification</del>
+                                <span class="comment"></span>
+                            </li>
+                            <li class="missing">Suppression
+                                <del>computed.mainSivInfoDto.infoIdentiteANotifier</del>
+                                <span class="comment"></span>
+                            </li>
+                            <li>Modification body.traitement.listStatut
+                                <span class="comment"></span>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+            </li>
+            <li>
+                <span class="POST">POST</span>
+                <b>/api/autorite-fourriere/dossier/{id}/classement/validate</b><br/>
+                <span>Route validant tous les champs du formulaire de classement manuel.</span>
+                <br><br>
+                <span class="POST">POST</span>
+                <b>/api/autorite-fourriere/dossier/{id}/classement/{field}/validate</b><br/>
+                <span>Route validant le champ spécifié dans le formulaire de classement manuel.</span>
+                <br><br>
+                <span class="POST">POST</span>
+                <b>/api/autorite-fourriere/dossier/{id}/coordonneesProprietaires/validate</b><br/>
+                <span>Route permettant de valider tous les champs du formulaire de mise à jour des coordonnées
+                    propriétaires.
+                </span>
+                <br><br>
+                <span class="POST">POST</span>
+                <b>/api/autorite-fourriere/dossier/{id}/coordonneesProprietaires/{field}/validate</b><br/>
+                <span>Route permettant de valider un champ du formulaire de mise à jour des Coordonnéees
+                    propriétaires.
+                </span>
+                <br><br>
+                <span class="POST">POST</span>
+                <b>/api/force-ordre/dossier/{dossierId}/expediteur/validate</b><br/>
+                <span>Validation de l&#x27;ensemble des champs des informations de l&#x27;expéditeur de la notification
+                    manuelle pour un dossier existant.
+                </span>
+                <br><br>
+                <span class="POST">POST</span>
+                <b>/api/force-ordre/dossier/{dossierId}/expediteur/{field}/validate</b><br/>
+                <span>Validation d&#x27;un champ des informations de l&#x27;expéditeur de la notification manuelle pour
+                    un dossier existant.
+                </span>
+                <br><br>
+                <span class="POST">POST</span>
+                <b>/api/force-ordre/dossier/{dossierId}/notification-infos/validate</b><br/>
+                <span>Validation de l&#x27;ensemble des champs des informations d&#x27;une notification manuelle pour un
+                    dossier existant.
+                </span>
+                <br><br>
+                <span class="POST">POST</span>
+                <b>/api/force-ordre/dossier/{dossierId}/notification-infos/{field}/validate</b><br/>
+                <span>Route permettant de valider un champ des informations de notification manuelle pour un dossier
+                    existant.
+                </span>
+                <br><br>
+                <span class="POST">POST</span>
+                <b>/api/force-ordre/dossier/{id}/coordonneesProprietaires/validate</b><br/>
+                <span>Route permettant de valider tous les champs du formulaire de mise à jour des coordonnées
+                    propriétaires.
+                </span>
+                <br><br>
+                <span class="POST">POST</span>
+                <b>/api/force-ordre/dossier/{id}/coordonneesProprietaires/{field}/validate</b><br/>
+                <span>Route permettant de valider un champ du formulaire de mise à jour des Coordonnéees
+                    propriétaires.
+                </span>
+                <br><br>
+                <span class="POST">POST</span>
+                <b>/api/force-ordre/dossier/{id}/main-levee/validate</b><br/>
+                <span>Route permettant de valider tous les champs du formulaire de mise à jour de la main levée.</span>
+                <br><br>
+                <span class="POST">POST</span>
+                <b>/api/autorite-fourriere/dossier/{id}/prolongation/validate</b><br/>
+                <span>Route validant le champ spécifié dans le formulaire de mise en fourrière. Si aucun champ n&#x27;est
+                    spécifié, tous les champs remplis seront validés.
+                </span>
+                <br><br>
+                <span class="POST">POST</span>
+                <b>/api/gardien-fourriere/dossier/fiche-fourriere/validate</b><br/>
+                <span>Validation de l&#x27;ensemble des champs de la fiche fourrière pour un dossier non créé.</span>
+                <br><br>
+                <span class="POST">POST</span>
+                <b>/api/gardien-fourriere/dossier/fiche-fourriere/{field}/validate</b><br/>
+                <span>Validation d&#x27;un champ de la fiche fourrière pour un dossier non créé.</span>
+                <br><br>
+                <span class="POST">POST</span>
+                <b>/api/gardien-fourriere/dossier/fiche-infraction/validate</b><br/>
+                <span>Validation de tous les champs de la fiche infraction pour un dossier non créé.</span>
+                <br><br>
+                <span class="POST">POST</span>
+                <b>/api/gardien-fourriere/dossier/fiche-infraction/{field}/validate</b><br/>
+                <span>Validation d&#x27;un champ de la fiche infraction pour un dossier non créé.</span>
+                <br><br>
+                <span class="POST">POST</span>
+                <b>/api/gardien-fourriere/dossier/fiche-vehicule/validate</b><br/>
+                <span>Validation de l&#x27;ensemble des champs de la fiche véhicule pour un dossier non créé.</span>
+                <br><br>
+                <span class="POST">POST</span>
+                <b>/api/gardien-fourriere/dossier/fiche-vehicule/{field}/validate</b><br/>
+                <span>Validation d&#x27;un seul champ de la fiche véhicule pour un dossier non créé.</span>
+                <br><br>
+                <span class="POST">POST</span>
+                <b>/api/gardien-fourriere/dossier/{dossierId}/fiche-fourriere/validate</b><br/>
+                <span>Validation de l&#x27;ensemble des champs de la fiche fourrière pour un dossier existant.</span>
+                <br><br>
+                <span class="POST">POST</span>
+                <b>/api/gardien-fourriere/dossier/{dossierId}/fiche-fourriere/{field}/validate</b><br/>
+                <span>Validation d&#x27;un champ de la fiche fourrière pour un dossier existant.</span>
+                <br><br>
+                <span class="POST">POST</span>
+                <b>/api/gardien-fourriere/dossier/{dossierId}/fiche-infraction/validate</b><br/>
+                <span>Validation de l&#x27;ensemble des champs de la fiche infraction pour un dossier existant.</span>
+                <br><br>
+                <span class="POST">POST</span>
+                <b>/api/gardien-fourriere/dossier/{dossierId}/fiche-infraction/{field}/validate</b><br/>
+                <span>Validation d&#x27;un champ de la fiche infraction pour un dossier existant.</span>
+                <br><br>
+                <span class="POST">POST</span>
+                <b>/api/gardien-fourriere/dossier/{dossierId}/fiche-vehicule/validate</b><br/>
+                <span>Validation de l&#x27;ensemble des champs de la fiche véhicule pour un dossier existant.</span>
+                <br><br>
+                <span class="POST">POST</span>
+                <b>/api/gardien-fourriere/dossier/{dossierId}/fiche-vehicule/{field}/validate</b><br/>
+                <span>Validation d&#x27;un champ de la fiche véhicule pour un dossier existant.</span>
+                <br><br>
+                <span class="POST">POST</span>
+                <b>/api/gardien-fourriere/dossier/{dossierId}/sortie/validate</b><br/>
+                <span>Validation de l&#x27;ensemble des champs de la fiche sortie pour un dossier existant.</span>
+                <br><br>
+                <span class="POST">POST</span>
+                <b>/api/gardien-fourriere/dossier/{dossierId}/sortie/{field}/validate</b><br/>
+                <span>Route permettant de valider un champ de la fiche sortie pour un dossier existant.</span>
+                <br><br>
+                <span class="POST">POST</span>
+                <b>/api/gardien-fourriere/dossier/{id}/bon-enlevement-gardien/validate</b><br/>
+                <span>Validation des données d&#x27;un bon d&#x27;enlèvement gardien.</span>
+                <br><br>
+                <span class="POST">POST</span>
+                <b>/api/gardien-fourriere/dossier/{id}/bon-enlevement-gardien/validate/{field}</b><br/>
+                <span>Route permettant de valider un champ spécifique d&#x27;un bon d&#x27;enlèvement gardien.</span>
+                <br><br>
+                <ul class="detail">
+                    <li><h3>Type Retour</h3>
+                        <ul class="change response">
+                            <li>Modification mainLeveeViolationDtoList.formField
+                                <span class="comment">Suppression de la valeur 'NOM_AGENT'</span>
+                            </li>
+                            <li>Modification updateExpediteurNotificationViolationDtoList.violationCode
+                                <span class="comment">Ajout de la valeur 'CODE_POSTAL_BAD_FORMAT'</span>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+            </li>
+            <li>
+                <span class="POST">POST</span>
+                <b>/api/force-ordre/dossier/{id}/main-levee/{field}/validate</b><br/>
+                <span>Route permettant de valider un champ du formulaire de mise à jour de la main levée.</span>
+                <ul class="detail">
+                    <li><h3>Paramètre</h3>
+                        <ul class="change param">
+                            <li>Modification field
+                                <span class="comment">Suppression de la valeur 'NOM_AGENT'</span>
+                            </li>
+                        </ul>
+                    </li>
+                    <li><h3>Type Retour</h3>
+                        <ul class="change response">
+                            <li>Modification mainLeveeViolationDtoList.formField
+                                <span class="comment">Suppression de la valeur 'NOM_AGENT'</span>
+                            </li>
+                            <li>Modification updateExpediteurNotificationViolationDtoList.violationCode
+                                <span class="comment">Ajout de la valeur 'CODE_POSTAL_BAD_FORMAT'</span>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+            </li>
+            <li>
+                <span class="PUT">PUT</span>
+                <b>/api/autorite-fourriere/profil/autorite-fourriere/{id}/confirm</b><br/>
+                <span>Route permettant de confirmer la validité des informations d&#x27;une autorité de fourrière</span>
+                <br><br>
+                <span class="POST">POST</span>
+                <b>/api/autorite-fourriere/update/{idCorrelation} </b><br/>
+                <span>Route permettant de mettre à jour les données d&#x27;une autorité de fourrière.</span>
+                <ul class="detail">
+                    <li><h3>Type Retour</h3>
+                        <ul class="change response">
+                            <li>Ajout type.displayed_text
+                                <span class="comment"></span>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+            </li>
+            <li>
+                <span class="GET">GET</span>
+                <b>/api/dossier/count</b><br/>
+                <span>Route pour compter des dossiers avec possibilité de filtres</span>
+                <ul class="detail">
+                    <li><h3>Paramètre</h3>
+                        <ul class="change param">
+                            <li>Ajout dossierCriteriaDto.antaiId
+                                <span class="comment"></span>
+                            </li>
+                            <li>Modification dossierCriteriaDto.statutDossierEnumList
+                                <span class="comment">Ajout de la valeur 'EN_COURS_DE_NOTIFICATION'</span>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+            </li>
+            <li>
+                <span class="GET">GET</span>
+                <b>/api/dossier/search</b><br/>
+                <span>Route de recherche des dossiers avec possibilité de filtres et de pagination de la requête,
+                    seulement une partie des informations des dossiers est renvoyée
+                </span>
+                <ul class="detail">
+                    <li><h3>Paramètre</h3>
+                        <ul class="change param">
+                            <li>Ajout dossierCriteriaDto.antaiId
+                                <span class="comment"></span>
+                            </li>
+                            <li>Modification dossierCriteriaDto.statutDossierEnumList
+                                <span class="comment">Ajout de la valeur 'EN_COURS_DE_NOTIFICATION'</span>
+                            </li>
+                        </ul>
+                    </li>
+                    <li><h3>Type Retour</h3>
+                        <ul class="change response">
+                            <li>Ajout dossiers.computed.fourriereDto.autoritesFourrieres.type.displayed_text
+                                <span class="comment"></span>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+            </li>
+            <li>
+                <span class="GET">GET</span>
+                <b>/api/dossier/{dossierId}/events</b><br/>
+                <span>Route permettant de récupérer tous les événements de la vie d&#x27;un dossier.</span>
+                <ul class="detail">
+                    <li><h3>Type Retour</h3>
+                        <ul class="change response">
+                            <li>Ajout eventDtoList.notificationAutoInfos
+                                <span class="comment"></span>
+                            </li>
+                            <li>Ajout eventDtoList.notificationManuelleInfos
+                                <span class="comment"></span>
+                            </li>
+                            <li class="missing">Suppression
+                                <del>eventDtoList.dateEnvoi</del>
+                                <span class="comment"></span>
+                            </li>
+                            <li class="missing">Suppression
+                                <del>eventDtoList.dateRetour</del>
+                                <span class="comment"></span>
+                            </li>
+                            <li class="missing">Suppression
+                                <del>eventDtoList.etatDistributionEnum</del>
+                                <span class="comment"></span>
+                            </li>
+                            <li>Modification eventDtoList.type
+                                <span class="comment">Ajout des valeurs <br>
+                                    'V1_NOTIFICATION_AUTO_DEMANDE_EDITION_EVENT' <br>
+                                    'V1_NOTIFICATION_AUTO_POSTED_EVENT' <br>
+                                    'V1_NOTIFICATION_AUTO_INFOS_RETOUR_EVENT' <br>
+                                </span>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+            </li>
+            <li>
+                <span class="GET">GET</span>
+                <b>/api/export/dossier</b><br/>
+                <span>Route permettant d&#x27;initialiser l&#x27;export des dossiers au format CSV.</span>
+                <ul class="detail">
+                    <li><h3>Paramètre</h3>
+                        <ul class="change param">
+                            <li>Ajout dossierCriteriaDto.antaiId
+                                <span class="comment"></span>
+                            </li>
+                            <li>Modification dossierCriteriaDto.statutDossierEnumList
+                                <span class="comment">Ajout des valeurs <br>
+                                    'A_NOTIFIER' <br>
+                                    'EN_COURS_DE_NOTIFICATION' <br>
+                                </span>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+            </li>
+            <li>
+                <span class="GET">GET</span>
+                <b>/api/gardien-fourriere/profil/fourriere/{idCorrelation} </b><br/>
+                <span>Récupération des données d&#x27;une fourrière.</span>
+                <br><br>
+                <span class="POST">POST</span>
+                <b>/api/gardien-fourriere/profil/fourriere/{idCorrelation}</b><br/>
+                <span>Mise à jour des données d&#x27;une fourrière.</span>
+                <br><br>
+                <span class="PUT">PUT</span>
+                <b>/api/gardien-fourriere/profil/fourriere/{id}/confirm</b><br/>
+                <span>Route permettant de confirmer la validité des informations d&#x27;une fourrière</span>
+                <ul class="detail">
+                    <li><h3>Type Retour</h3>
+                        <ul class="change response">
+                            <li>Ajout autoritesFourrieres.type.displayed_text
+                                <span class="comment"></span>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+            </li>
+            <li>
+                <span class="GET">GET</span>
+                <b>/api/referentiel/autorite-fourriere</b><br/>
+                <span>Route récupérant toutes les autorités de fourrière.</span>
+                <ul class="detail">
+                    <li><h3>Type Retour</h3>
+                        <ul class="change response">
+                            <li>Ajout referenceDtoList.type.displayed_text
+                                <span class="comment"></span>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+            </li>
+            <li>
+                <span class="POST">POST</span>
+                <b>/api/referentiel/autorite-fourriere</b><br/>
+                <span>Route permettant de créer une autorite de fourrière.</span>
+                <ul class="detail">
+                    <li><h3>Paramètre</h3>
+                        <ul class="change param">
+                            <li>Ajout requestDto.idHermes
+                                <span class="comment"></span>
+                            </li>
+                            <li>Ajout requestDto.idHermesUtilisateur
+                                <span class="comment"></span>
+                            </li>
+                        </ul>
+                    </li>
+                    <li><h3>Type Retour</h3>
+                        <ul class="change response">
+                            <li>Ajout type.displayed_text
+                                <span class="comment"></span>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+            </li>
+            <li>
+                <span class="GET">GET</span>
+                <b>/api/referentiel/autorite-fourriere/search-using-specs</b><br/>
+                <span>Recherche de la liste d&#x27;autorités de fourrière filtrées par le corps de la requête</span>
+                <ul class="detail">
+                    <li><h3>Paramètre</h3>
+                        <ul class="change param">
+                            <li>Ajout emptyIdHermes
+                                <span class="comment"></span>
+                            </li>
+                            <li>Ajout emptyIdHermesUtilisateur
+                                <span class="comment"></span>
+                            </li>
+                            <li>Ajout idHermes
+                                <span class="comment"></span>
+                            </li>
+                            <li>Ajout idHermesUtilisateur
+                                <span class="comment"></span>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+            </li>
+            <li>
+                <span class="POST">POST</span>
+                <b>/api/referentiel/autorite-fourriere/update/{idCorrelation}/validate</b><br/>
+                <span>Route permettant de valider les données de mise à jour d&#x27;une autorité de fourrière.</span>
+                <br><br>
+                <span class="POST">POST</span>
+                <b>/api/referentiel/autorite-fourriere/validate</b><br/>
+                <span>Route permettant de valider les données de création d&#x27;une autorité de fourrière.</span>
+                <ul class="detail">
+                    <li><h3>Paramètre</h3>
+                        <ul class="change param">
+                            <li>Ajout requestDto.idHermes
+                                <span class="comment"></span>
+                            </li>
+                            <li>Ajout requestDto.idHermesUtilisateur
+                                <span class="comment"></span>
+                            </li>
+                        </ul>
+                    </li>
+                    <li><h3>Type Retour</h3>
+                        <ul class="change response">
+                            <li>Modification autoriteFourriereViolationsDto.formField
+                                <span class="comment">Ajout de nouvelles valeurs <br>
+                                    'ID_HERMES' <br>
+                                    'ID_HERMES_UTILISATEUR</span>
+                            </li>
+                            <li>Modification autoriteFourriereViolationsDto.violationCode
+                                <span class="comment">Ajout de nouvelles valeurs <br>
+                                    'ID_HERMES_BAD_FORMAT' <br>
+                                    'ID_HERMES_UNICITY_VIOLATION' <br>
+                                    'ID_HERMES_UTILISATEUR_UNICITY_VIOLATION</span>
+                            </li>
+                            <li>Modification fourriereViolationsDto.formField
+                                <span class="comment">Ajout de nouvelles valeurs <br>
+                                    'ADRESSE' <br>
+                                    'NUMERO_VOIE' <br>
+                                    'REPETITION' <br>
+                                    'COMMUNE' <br>
+                                    'ID_HERMES'</span>
+                            </li>
+                            <li>Modification fourriereViolationsDto.violationCode
+                                <span class="comment">Ajout de nouvelles valeurs <br>
+                                    'ADRESSE_AND_RAISON_SOCIALE_UNICITY' <br>
+                                    'ID_HERMES_BAD_FORMAT' <br>
+                                    'ID_HERMES_UNICITY_VIOLATION' <br>
+                                    'ID_HERMES_SHOULD_BE_NULL'</span>
+                            </li>
+                        </ul>
+                        Ajout de la valeur 'EN_COURS_DE_NOTIFICATION'
+                    </li>
+                </ul>
+            </li>
+            <li>
+                <span class="POST">POST</span>
+                <b>/api/referentiel/autorite-fourriere/update/{idCorrelation}/validate/{field}</b><br/>
+                <span>Route permettant de valider un champ des données de mise à jour d&#x27;une autorité fourrière.
+                </span>
+                <br><br>
+                <span class="POST">POST</span>
+                <b>/api/referentiel/autorite-fourriere/validate/{field} </b><br/>
+                <span>Route permettant de valider un champ des données de création d&#x27;une autorité fourrière.</span>
+                <ul class="detail">
+                    <li><h3>Paramètre</h3>
+                        <ul class="change param">
+                            <li>Ajout requestDto.idHermes
+                                <span class="comment"></span>
+                            </li>
+                            <li>Ajout requestDto.idHermesUtilisateur
+                                <span class="comment"></span>
+                            </li>
+                            <li>Modification field
+                                <span class="comment"></span>
+                            </li>
+                        </ul>
+                    </li>
+                    <li><h3>Type Retour</h3>
+                        <ul class="change response">
+                            <li>Modification autoriteFourriereViolationsDto.formField
+                                <span class="comment">Ajout de nouvelles valeurs <br>
+                                    'ID_HERMES' <br>
+                                    'ID_HERMES_UTILISATEUR</span>
+                            </li>
+                            <li>Modification autoriteFourriereViolationsDto.violationCode
+                                <span class="comment">Ajout de nouvelles valeurs <br>
+                                    'ID_HERMES_BAD_FORMAT' <br>
+                                    'ID_HERMES_UNICITY_VIOLATION' <br>
+                                    'ID_HERMES_UTILISATEUR_UNICITY_VIOLATION</span>
+                            </li>
+                            <li>Modification fourriereViolationsDto.formField
+                                <span class="comment">Ajout de nouvelles valeurs <br>
+                                    'ADRESSE' <br>
+                                    'NUMERO_VOIE' <br>
+                                    'REPETITION' <br>
+                                    'COMMUNE' <br>
+                                    'ID_HERMES'</span>
+                            </li>
+                            <li>Modification fourriereViolationsDto.violationCode
+                                <span class="comment">Ajout de nouvelles valeurs <br>
+                                    'ADRESSE_AND_RAISON_SOCIALE_UNICITY' <br>
+                                    'ID_HERMES_BAD_FORMAT' <br>
+                                    'ID_HERMES_UNICITY_VIOLATION' <br>
+                                    'ID_HERMES_SHOULD_BE_NULL'</span>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+            </li>
+            <li>
+                <span class="GET">GET</span>
+                <b>/api/referentiel/autorite-fourriere/{idCorrelation} </b><br/>
+                <span>Route recherchant une autorités de fourrière.</span>
+                <ul class="detail">
+                    <li><h3>Type Retour</h3>
+                        <ul class="change response">
+                            <li>Ajout type.displayed_text
+                                <span class="comment"></span>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+            </li>
+            <li>
+                <span class="PUT">PUT</span>
+                <b>/api/referentiel/autorite-fourriere/{idCorrelation} </b><br/>
+                <span>Route permettant de mettre à jour une autorité de fourrière.</span>
+                <ul class="detail">
+                    <li><h3>Paramètre</h3>
+                        <ul class="change param">
+                            <li>Ajout requestDto.idHermes
+                                <span class="comment"></span>
+                            </li>
+                            <li>Ajout requestDto.idHermesUtilisateur
+                                <span class="comment"></span>
+                            </li>
+                        </ul>
+                    </li>
+                    <li><h3>Type Retour</h3>
+                        <ul class="change response">
+                            <li>Ajout type.displayed_text
+                                <span class="comment"></span>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+            </li>
+            <li>
+                <span class="GET">GET</span>
+                <b>/api/referentiel/fourriere</b><br/>
+                <span>Route récupérant toutes les fourrière.</span>
+                <ul class="detail">
+                    <li><h3>Type Retour</h3>
+                        <ul class="change response">
+                            <li>Ajout referenceDtoList.autoritesFourrieres.type.displayed_text
+                                <span class="comment"></span>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+            </li>
+            <li>
+                <span class="POST">POST</span>
+                <b>/api/referentiel/fourriere</b><br/>
+                <span>Route permettant de créer une fourrière.</span>
+                <br><br>
+                <span class="PUT">PUT</span>
+                <b>/api/referentiel/fourriere/{idCorrelation} </b><br/>
+                <span>Route permettant de mettre à jour une fourrière.</span>
+                <ul class="detail">
+                    <li><h3>Paramètre</h3>
+                        <ul class="change param">
+                            <li>Ajout requestDto.idHermes
+                                <span class="comment"></span>
+                            </li>
+                        </ul>
+                    </li>
+                    <li><h3>Type Retour</h3>
+                        <ul class="change response">
+                            <li>Ajout autoritesFourrieres.type.displayed_text
+                                <span class="comment"></span>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+            </li>
+            <li>
+                <span class="GET">GET</span>
+                <b>/api/referentiel/fourriere/search-using-specs</b><br/>
+                <span>Recherche de la liste des fourrière filtrées par le corps de la requête</span>
+                <ul class="detail">
+                    <li><h3>Paramètre</h3>
+                        <ul class="change param">
+                            <li>Ajout emptyIdHermes
+                                <span class="comment"></span>
+                            </li>
+                            <li>Ajout idHermes
+                                <span class="comment"></span>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+            </li>
+            <li>
+                <span class="POST">POST</span>
+                <b>/api/referentiel/fourriere/validate</b><br/>
+                <span>Route permettant de valider les données de création d&#x27;une fourrière.</span>
+                <br><br>
+                <span class="POST">POST</span>
+                <b>/api/referentiel/fourriere/validate/{field} </b><br/>
+                <span>Route permettant de valider un champ des données de création d&#x27;une fourrière.</span>
+                <br><br>
+                <span class="POST">POST</span>
+                <b>/api/referentiel/fourriere/{idCorrelation}/validate</b><br/>
+                <span>Route permettant de valider les données de mise à jour d&#x27;une fourrière.</span>
+                <br><br>
+                <span class="POST">POST</span>
+                <b>/api/referentiel/fourriere/{idCorrelation}/validate/{field}</b><br/>
+                <span>Route permettant de valider un champ des données de mise à jour d&#x27;une fourrière.</span>
+                <ul class="detail">
+                    <li><h3>Paramètre</h3>
+                        <ul class="change param">
+                            <li>Ajout requestDto.idHermes
+                                <span class="comment"></span>
+                            </li>
+                            <li>Modification field
+                                <span class="comment"></span>
+                            </li>
+                        </ul>
+                    </li>
+                    <li><h3>Type Retour</h3>
+                        <ul class="change response">
+                            <li>Modification autoriteFourriereViolationsDto.formField
+                                <span class="comment">Ajout de nouvelles valeurs <br>
+                                    'ID_HERMES' <br>
+                                    'ID_HERMES_UTILISATEUR</span>
+                            </li>
+                            <li>Modification autoriteFourriereViolationsDto.violationCode
+                                <span class="comment">Ajout de nouvelles valeurs <br>
+                                    'ID_HERMES_BAD_FORMAT' <br>
+                                    'ID_HERMES_UNICITY_VIOLATION' <br>
+                                    'ID_HERMES_UTILISATEUR_UNICITY_VIOLATION</span>
+                            </li>
+                            <li>Modification fourriereViolationsDto.formField
+                                <span class="comment">Ajout de nouvelles valeurs <br>
+                                    'ADRESSE' <br>
+                                    'NUMERO_VOIE' <br>
+                                    'REPETITION' <br>
+                                    'COMMUNE' <br>
+                                    'ID_HERMES'</span>
+                            </li>
+                            <li>Modification fourriereViolationsDto.violationCode
+                                <span class="comment">Ajout de nouvelles valeurs <br>
+                                    'ADRESSE_AND_RAISON_SOCIALE_UNICITY' <br>
+                                    'ID_HERMES_BAD_FORMAT' <br>
+                                    'ID_HERMES_UNICITY_VIOLATION' <br>
+                                    'ID_HERMES_SHOULD_BE_NULL'</span>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+            </li>
+            <li>
+                <span class="GET">GET</span>
+                <b>/api/referentiel/fourriere/{idCorrelationFourriere}/autoritesfourriere</b><br/>
+                <span>Route récupérant toutes les autorités fourrière d&#x27;une fourrière.</span>
+                <ul class="detail">
+                    <li><h3>Type Retour</h3>
+                        <ul class="change response">
+                            <li>Ajout referenceDtoList.type.displayed_text
+                                <span class="comment"></span>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+            </li>
+            <li>
+
+                <b>/api/referentiel/fourriere/{idCorrelation}/condition-reactivation</b><br/>
+                <span>Recherche des données permettant de savoir si une fourrière peut être réactivée</span>
+                <ul class="detail">
+                    <li><h3>Type Retour</h3>
+                        <ul class="change response">
+                            <li>Ajout alreadyExists
+                                <span class="comment"></span>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+            </li>
+            <li>
+                <span class="GET">GET</span>
+                <b>/api/referentiel/statut-consultable</b><br/>
+                <span>Route récupérant les statuts consultables selon le profil.</span>
+                <ul class="detail">
+                    <li><h3>Type Retour</h3>
+                        <ul class="change response">
+                            <li>Modification statuts
+                                <span class="comment">Ajout du statut 'EN_COURS_DE_NOTIFICATION'</span>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+            </li>
+            <li>
+                <span class="GET">GET</span>
+                <b>/api/referentiel/type-autorite-fourriere</b><br/>
+                <span>Route récupérant tous les types d&#x27;autorités de fourrière.</span>
+                <ul class="detail">
+                    <li><h3>Type Retour</h3>
+                        <ul class="change response">
+                            <li>Ajout referenceDtoList.displayed_text
+                                <span class="comment"></span>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+            </li>
+            <li>
+                <span class="POST">POST</span>
+                <b>/api/referentiel/unite-fo/validate</b><br/>
+                <span>Route permettant de valider les données de création d&#x27;une unite FO.</span>
+                <br><br>
+                <span class="POST">POST</span>
+                <b>/api/referentiel/unite-fo/validate/{field} </b><br/>
+                <span>Route permettant de valider un champ des données de création d&#x27;une unité FO.</span>
+                <br><br>
+                <span class="POST">POST</span>
+                <b>/api/referentiel/unite-fo/{idCorrelation}/validate</b><br/>
+                <span>Route permettant de valider les données de mise à jour d&#x27;une unite FO.</span>
+                <br><br>
+                <span class="POST">POST</span>
+                <b>/api/referentiel/unite-fo/{idCorrelation}/validate/{field}</b><br/>
+                <span>Route permettant de valider un champ des données de mise à jour d&#x27;une unité FO.</span>
+                <ul class="detail">
+                    <li><h3>Type Retour</h3>
+                        <ul class="change response">
+                            <li>Modification autoriteFourriereViolationsDto.formField
+                                <span class="comment">Ajout de nouvelles valeurs <br>
+                                    'ID_HERMES' <br>
+                                    'ID_HERMES_UTILISATEUR</span>
+                            </li>
+                            <li>Modification autoriteFourriereViolationsDto.violationCode
+                                <span class="comment">Ajout de nouvelles valeurs <br>
+                                    'ID_HERMES_BAD_FORMAT' <br>
+                                    'ID_HERMES_UNICITY_VIOLATION' <br>
+                                    'ID_HERMES_UTILISATEUR_UNICITY_VIOLATION</span>
+                            </li>
+                            <li>Modification fourriereViolationsDto.formField
+                                <span class="comment">Ajout de nouvelles valeurs <br>
+                                    'ADRESSE' <br>
+                                    'NUMERO_VOIE' <br>
+                                    'REPETITION' <br>
+                                    'COMMUNE' <br>
+                                    'ID_HERMES'</span>
+                            </li>
+                            <li>Modification fourriereViolationsDto.violationCode
+                                <span class="comment">Ajout de nouvelles valeurs <br>
+                                    'ADRESSE_AND_RAISON_SOCIALE_UNICITY' <br>
+                                    'ID_HERMES_BAD_FORMAT' <br>
+                                    'ID_HERMES_UNICITY_VIOLATION' <br>
+                                    'ID_HERMES_SHOULD_BE_NULL'</span>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+            </li>
+        </ol>
+    </div>
+</div>
+</body>
+</html>
